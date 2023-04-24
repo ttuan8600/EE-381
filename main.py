@@ -10,13 +10,16 @@ data = np.loadtxt(fname, delimiter=',', skiprows=1)
 df = pd.DataFrame(data, columns=['year', 'amount'])
 print(df.head())
 
-df_byYear = df.groupby('year')['amount'].mean().round(2)
+df_yearly_avg = df.groupby('year')['amount'].mean().round(2)
+df_yearly_std = df.groupby('year')['amount'].std().round(2)
 
-print(df_byYear.head())
+print(df_yearly_avg.head())
+print(df_yearly_std.head())
 
-df_byYear.plot(kind='bar', xlabel='Year', ylabel='Mean Price', title='Mean Price by Year', width=1, xticks=['2000', '2005', '2010', '2015', '2020'])
-# plt.yticks()
-# plt.hist('Year', bins=10)
+df_yearly_avg.plot(kind='bar', xlabel='Year', ylabel='Mean Price', title='Mean Price by Year')
+plt.show()
+
+df_yearly_std.plot(kind='bar', xlabel='Year', ylabel='STD', title='STD by Year')
 plt.show()
 
 # fig, ax = plt.subplots(1, 2)   # Create a figure containing a single axes
