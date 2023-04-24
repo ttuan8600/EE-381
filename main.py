@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 ######  Example 1.11 ##########
 # load text file
-fname = 'exp01-11.csv' # comma separated values
+fname = 'Sales_01_20.csv' # comma separated values
 data1 = np.loadtxt(fname, delimiter=',', skiprows=1)  #skip first row
 #print (data1)
 fig, ax = plt.subplots(1, 2)   # Create a figure containing a single axes
