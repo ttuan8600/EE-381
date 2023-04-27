@@ -5,30 +5,20 @@ import matplotlib.pyplot as plt
 # load text file
 fname = 'Sales_01_20.csv' # comma separated values
 data = np.loadtxt(fname, delimiter=',', skiprows=1)
+print(data[:5])
+years = np.unique(data[:, 0])
 
-df = pd.DataFrame(data, columns=['year', 'amount'])
-print(df.head())
+avg_byYear = np.zeros(len(years))
 
-df_yearly_avg = df.groupby('year')['amount'].mean().round(2)
-df_yearly_std = df.groupby('year')['amount'].std().round(2)
+for i, year in enumerate(years):
+    avg_byYear[i] = np.mean(data[data[:, 0] == year, 1]).round(2)
 
-print(df_yearly_avg.head())
-print(df_yearly_std.head())
+fig = plt.figure(figsize=(10, 7))
+x = [2000, 2005, 2010, 2015, 2020]
 
-df_yearly_avg.plot(kind='bar', xlabel='Year', ylabel='Mean Price', title='Mean Price by Year')
+plt.bar(years, avg_byYear)
+plt.xticks(x, x)
+plt.xlabel('Year')
+plt.ylabel('Mean Price')
+plt.title('Yearly Mean')
 plt.show()
-
-df_yearly_std.plot(kind='bar', xlabel='Year', ylabel='STD', title='STD by Year')
-plt.show()
-
-# fig, ax = plt.subplots(1, 2)   # Create a figure containing a single axes
-# ax[0].hist(data1, ec='black')
-# ax[0].set_title("Equal width bins")
-#
-# ax[1].hist(data1, ec='black', bins=[2, 4, 6, 8, 12, 20, 30])
-# ax[1].set_title("Unequal width")
-#
-# ax[0].set_xlabel('Bond strength')
-# ax[1].set_xlabel('Bond strength')
-# ax[0].set_ylabel('')
-# plt.show()
