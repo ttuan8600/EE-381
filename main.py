@@ -1,7 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-######  EE-381 Final Project ##########
+#######################################################
+###             EE-381 Final Project                ###
+###                Name: Twan Tran                  ###
+###                @ID : 029136612                  ###
+#######################################################
 
 # load text file
 fname = 'Sales_01_20.csv'  # comma separated values
