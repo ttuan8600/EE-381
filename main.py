@@ -15,23 +15,39 @@ data = np.loadtxt(fname, delimiter=',', skiprows=1)
 # make an array for the unique year as x-axis
 years = np.unique(data[:, 0])
 
-# make an zeros array with the len as years
+# make a dictionary to store the amount via year as key, ex: {2020 : [a, b , c, ...] }
+amount = {}
+for year in years:
+    amount[year] = list(data[data[:, 0] == year, 1])
+    
+# make an array to store the average amount via year
 avg_byYear = np.zeros(len(years))
-
-# iterate through the data, get an array of value for each matching year, then avg them, round by 2 decimal
 for i, year in enumerate(years):
-    avg_byYear[i] = np.mean(data[data[:, 0] == year, 1]).round(2)
-
-# set the size for the figure contain the bar graph
-fig = plt.figure(figsize=(10, 7))
+    avg_byYear[i] = np.mean(amount[year]).round(2)
 
 # create the an array acting for x-axis
 x = [2000, 2005, 2010, 2015, 2020]
 
-# create the bar graph with title, axis labels, and modified tick
+# set figure size to hold the graph
+fig = plt.figure(figsize=(7, 5))
+
+# create Yearly Mean the bar graph with title, axis labels, and modified tick
 plt.bar(years, avg_byYear)
 plt.xticks(x, x)
 plt.xlabel('Year')
 plt.ylabel('Mean Price')
 plt.title('Yearly Mean')
+plt.show()
+    
+# make an array to store and calulate the STD by year 
+std_byYear = np.zeros(len(years))
+for i, year in enumerate(years):
+    std_byYear[i] = np.std(amount[year]).round(2)
+
+# create Yearly STD the bar graph with title, axis labels, and modified tick
+plt.bar(years, std_byYear)
+plt.xticks(x, x)
+plt.xlabel('Year')
+plt.ylabel('STD')
+plt.title('Yearly STD')
 plt.show()
