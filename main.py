@@ -28,32 +28,32 @@ for i, year in enumerate(years):
 # create the an array acting for x-axis
 x = [2000, 2005, 2010, 2015, 2020]
 
-# # set figure size to hold the graph
-# fig = plt.figure(figsize=(7, 5))
+# set figure size to hold the graph
+fig = plt.figure(figsize=(7, 5))
 
-# # create Yearly Mean the bar graph with title, axis labels, and modified tick
-# plt.bar(years, avg_byYear)
-# plt.xticks(x, x)
-# plt.xlabel('Year')
-# plt.ylabel('Mean Price')
-# plt.title('Yearly Mean')
-# plt.show()
+# create Yearly Mean the bar graph with title, axis labels, and modified tick
+plt.bar(years, avg_byYear)
+plt.xticks(x, x)
+plt.xlabel('Year')
+plt.ylabel('Mean Price')
+plt.title('Yearly Mean')
+plt.show()
     
-# # make an array to store and calulate the STD by year 
-# std_byYear = np.zeros(len(years))
-# for i, year in enumerate(years):
-#     std_byYear[i] = np.std(amount[year]).round(2)
+# make an array to store and calulate the STD by year 
+std_byYear = np.zeros(len(years))
+for i, year in enumerate(years):
+    std_byYear[i] = np.std(amount[year]).round(2)
 
-# # create Yearly STD the bar graph with title, axis labels, and modified tick
-# plt.bar(years, std_byYear)
-# plt.xticks(x, x)
-# plt.xlabel('Year')
-# plt.ylabel('STD')
-# plt.title('Yearly STD')
-# plt.show()
+# create Yearly STD the bar graph with title, axis labels, and modified tick
+plt.bar(years, std_byYear)
+plt.xticks(x, x)
+plt.xlabel('Year')
+plt.ylabel('STD')
+plt.title('Yearly STD')
+plt.show()
 
 # init a count to count values in between $200,000 - $300,000 (inclusive), 
-# then store and calculate the Probability by 
+# then store and calculate the Probability (count/total amound by year)
 c = 0
 prb_byYear = np.zeros(len(years))
 for i, year in enumerate (years):
