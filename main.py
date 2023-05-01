@@ -56,9 +56,9 @@ plt.show()
 # then store and calculate the Probability (count/total amound by year)
 c = 0
 prb_byYear = np.zeros(len(years))
-for i, year in enumerate (years):
+for i, year in enumerate(years):
     for val in amount[year]:
-        if val >=200000 and val <= 300000:
+        if 200000 <= val <= 300000:
             c += 1
     prb_byYear[i] = round((c/len(amount[year])), 4)
     c = 0
