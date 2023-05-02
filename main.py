@@ -24,8 +24,8 @@ for year in years:
 avg_byYear = np.zeros(len(years))
 for i, year in enumerate(years):
     avg_byYear[i] = np.mean(amount[year]).round(2)
-
-# create the an array acting for x-axis
+    
+# create the an array acting for x-axis ticks
 x = [2000, 2005, 2010, 2015, 2020]
 
 # set figure size to hold the graph
@@ -62,7 +62,7 @@ for i, year in enumerate(years):
             c += 1
     prb_byYear[i] = round((c/len(amount[year])), 4)
     c = 0
-    
+  
 # create Yearly Probability the bar graph with title, axis labels, and modified tick
 plt.bar(years, prb_byYear)
 plt.xticks(x, x)
